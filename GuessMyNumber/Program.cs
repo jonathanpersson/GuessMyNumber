@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using GuessMyNumber.Models;
 
 namespace GuessMyNumber
 {
@@ -6,7 +8,10 @@ namespace GuessMyNumber
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            List<string> test = new List<string>() {"test1", "test2", "test3"};
+            Menu menu = new Menu(test);
+
+            Console.WriteLine(menu.Render());
         }
     }
 }
