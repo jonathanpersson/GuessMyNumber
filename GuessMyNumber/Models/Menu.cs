@@ -16,6 +16,11 @@ namespace GuessMyNumber.Models
         private int _maxSelection;
 
         /// <summary>
+        /// Message shown over menu
+        /// </summary>
+        private string _message;
+
+        /// <summary>
         /// Construct menu
         /// </summary>
         /// <param name="items">Menu items to display</param>
@@ -23,6 +28,12 @@ namespace GuessMyNumber.Models
         {
             _items = items;
             _maxSelection = items.Count - 1;
+        }
+
+        public Menu(List<string> items, string message)
+        {
+            _items = items;
+            _message = message;
         }
 
         /// <summary>
@@ -47,6 +58,9 @@ namespace GuessMyNumber.Models
                 // cursor should loop back around if current is below zero or above max
                 if (current < 0) current = _maxSelection;
                 else if (current > _maxSelection) current = 0; 
+                
+                // render menu message if one is set
+                if (_message.Length > 0) Console.WriteLine(_message);
                 
                 // render menu items
                 for (int i = 0; i <= _maxSelection; i++)
