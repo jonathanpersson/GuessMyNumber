@@ -34,6 +34,7 @@ namespace GuessMyNumber.Models
         {
             _items = items;
             _message = message;
+            _maxSelection = items.Count - 1;
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace GuessMyNumber.Models
                 // render menu items
                 for (int i = 0; i <= _maxSelection; i++)
                 {
-                    if (i == current) Console.Write(">");
+                    if (i == current) Console.Write("> ");
                     Console.WriteLine(_items[i]);
                 }
 

@@ -16,7 +16,7 @@ namespace GuessMyNumber
                 Games.New();
 
                 Console.Clear();
-                Console.Write("Would you like to play again? (y/n)");
+                Console.Write("Would you like to play again? (y/n): ");
                 string input = Console.ReadLine();
 
                 // possibly unnecessary switch but ssh

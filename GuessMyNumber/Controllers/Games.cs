@@ -9,6 +9,11 @@ namespace GuessMyNumber.Controllers
         /// Currently active game
         /// </summary>
         private static Game _currentGame;
+
+        /// <summary>
+        /// Currently active game
+        /// </summary>
+        public static Game CurrentGame => _currentGame;
         
         /// <summary>
         /// Start and play new game
@@ -17,7 +22,6 @@ namespace GuessMyNumber.Controllers
         {
             Console.Clear();
             SetupGame();
-            Play();
         }
 
         /// <summary>
@@ -51,21 +55,39 @@ namespace GuessMyNumber.Controllers
                     SetupVSGame(maxNumber);
                     break;
             }
+            
+            // play game!
+            _currentGame.Play();
         }
 
+        /// <summary>
+        /// Set up a standard solo game
+        /// </summary>
+        /// <param name="maxNumber">Maximum generated number</param>
         private static void SetupSoloGame(int maxNumber)
         {
-            
+            _currentGame = new Game(maxNumber);
         }
 
+        /// <summary>
+        /// Set up a VS. bots game
+        /// </summary>
+        /// <param name="maxNumber">Maximum generated number</param>
         private static void SetupVSGame(int maxNumber)
         {
-            
-        }
+            int botCount = 1;
+            bool parseSuccessful = false;
 
-        private static void Play()
-        {
+            Console.Clear();
             
+            // get bot count
+            while (!parseSuccessful)
+            {
+                Console.Write("How many bots do you want to play against? ");
+                parseSuccessful = int.TryParse(Console.ReadLine(), out botCount);
+            }
+            
+            _currentGame = new Game(maxNumber, false, botCount);
         }
     }
 }
